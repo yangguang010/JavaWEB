@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>二级联动</title>
+	<script type="text/javascript">
+		window.onload=function() {
+			var citys = initCity();//初始化数据
+			document.getElementById("province").onchange=function(){
+				//根据省份的变化，改变城市的列表值
+				var provinceValue = this.value;
+				//取citys数组中对应索引位置上的元素
+				var cs = citys[provinceValue];
+
+				//添加之前：初始化为请求选择
+				document.getElementById("city").options.length=0;
+				var pleaseSelectOp = new Option("--请选择--","");
+				document.getElementById("city").add(pleaseSelectOp);
+
+				//给第二个city下拉选择框，添加option元素：HTML DOM编程
+				for(var i = 0; i < cs.length; i++) {
+					var op = new Option(cs[i],cs[i]);
+					document.getElementById("city").add(op);
+				}
+			}
+		}
+
+		function initCity() {
+			var citys = new Array();
+			citys[1] = new Array("朝阳区","海淀区","昌平区");
+			citys[2] = new Array("成都","德阳","广元");
+			citys[3] = new Array("郑州","洛阳","开封");
+			citys[4] = new Array("汕头","东莞","深圳");
+			return citys;
+		}
+	</script>
+</head>
+<body>
+省份：
+	<select id="province" name="province">
+		<option value="">--请选择--</option>
+		<option value="1">北京</option>
+		<option value="2">四川</option>
+		<option value="3">河南</option>
+		<option value="4">广州</option>
+	</select>
+&nbsp;&nbsp;&nbsp;
+城市：
+	<select id="city" name="city">
+		<option value="">--请选择--</option>
+	</select>
+</body>
+</html>

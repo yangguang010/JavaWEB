@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>JavaScript鼠标事件</title>
+</head>
+<script type="text/javascript">
+/*	window.onload=function() {
+		 var divObj = document.getElementById("d1");
+		 divObj.onmouseover = function() {
+		 	this.style.backgroundColor = "yellow";
+		 }
+		 divObj.onmouseout = function() {
+		 	this.style.backgroundColor = "white";
+		 }
+	}*/
+	function nameClick() {
+		var name = document.getElementById("username").value;
+		if(""==name) {
+			alert("请输入用户名！");
+			return;
+		}
+		document.getElementById("f1").submit();
+	}
+
+	window.onload=function() {
+		document.getElementById("username2").focus();//得到焦点
+		document.getElementById("username2").onfocus=function() {//得到焦点后出触发的事件
+			this.value="";
+		}
+		document.getElementById("username2").onblur=function() {
+			if(this.value=="")
+				this.value="邮箱/手机号";
+
+		}
+
+		document.getElementById("password").focus();//得到焦点
+		document.getElementById("password").onfocus=function() {//得到焦点后出触发的事件
+			this.value="";
+		}
+		document.getElementById("password").onblur=function() {
+			if(this.value=="")
+				this.value="3-8位数字组成";
+		}
+	}
+
+	window.onload=function() {
+		document.getElementById("number").onchange=function() {
+			var amount = this.value*79;
+			document.getElementById("total").value=amount;
+		}
+	}
+
+</script>
+<body>
+<div  id="d1" style="width: 300px;height: 30px;background-color: white; border: black 1px solid;">
+	JavaScript点击事件
+</div>
+<br><br>
+<form id="f1" action="http://www.scu.edu.cn">
+	<input type="text" id="username" name="username"/><br>
+	<input type="button" name="button" value="提交" onclick="nameClick()" />
+</form>
+<br><br>
+
+<form id="form2" style="border: black 1px solid;">
+	用户名：<input type="text" name="username" id="username2" value="邮箱/手机号"/><br>
+	密码：<input type="text" name="password" id="password" value="3-8位数字组成"/><br>
+	<input type="button" name="button" value="提交"/>
+</form>
+<hr>
+<table border="1" width="600">
+	<tr>
+		<td>书名</td>
+		<td>作者</td>
+		<td>单价</td>
+		<td>数量</td>
+		<td>金额</td>
+	</tr>
+	<tr>
+		<td>Java编程思想</td>
+		<td>美国</td>
+		<td>￥79</td>
+		<td>
+			<input type="text" name="number" id="number" value="0" onchange="" />
+		</td>
+		<td>
+			<input type="text" name="total" id="total" value="0"/>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
